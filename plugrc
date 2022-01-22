@@ -1,0 +1,23 @@
+"
+" Plugin Manager
+"
+call plug#begin()
+" Default VIM Settings
+Plug 'tpope/vim-sensible'
+
+" Fuzzy Finder
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
+" Status
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Git
+Plug 'airblade/vim-gitgutter'
+
+" Colorscheme
+Plug 'arcticicestudio/nord-vim'
+call plug#end()
+
+" vim: ft=vim
