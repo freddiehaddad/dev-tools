@@ -9,6 +9,9 @@ Plug 'tpope/vim-sensible'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
+" Multicursor
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
 " Status
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
