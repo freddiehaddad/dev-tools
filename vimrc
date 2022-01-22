@@ -31,6 +31,8 @@ colorscheme nord
 "
 set nu
 set cursorline
+set signcolumn=number
+set noswapfile
 
 "
 " Keybinds
