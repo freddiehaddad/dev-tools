@@ -39,6 +39,7 @@ set nu
 set cursorline
 set signcolumn=number
 set noswapfile
+set fillchars+=vert:\ ,eob:\ 
 
 "
 " Keybinds
