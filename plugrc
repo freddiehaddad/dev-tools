@@ -21,6 +21,9 @@ Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+" Terminal
+Plug 'voldikss/vim-floaterm'
+
 " Code Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 

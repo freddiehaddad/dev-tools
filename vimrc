@@ -21,6 +21,9 @@ Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+" Terminal
+Plug 'voldikss/vim-floaterm'
+
 " Code Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -209,3 +212,12 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+"
+" Floaterm
+"
+let g:floaterm_keymap_new    = '<leader>tt'
+let g:floaterm_keymap_prev   = '<leader>tp'
+let g:floaterm_keymap_next   = '<leader>tn'
+let g:floaterm_keymap_toggle = '<leader>th'
+let g:floaterm_keymap_kill   = '<leader>tk'
