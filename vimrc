@@ -14,6 +14,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Git
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Colorscheme
@@ -49,6 +50,10 @@ nnoremap <leader>ff <cmd>Files<cr>
 nnoremap <leader>fg <cmd>Rg<cr>
 nnoremap <leader>fh <cmd>Helptags<cr>
 
+"
+" Git
+"
+nmap <silent><leader>g :call setbufvar(winbufnr(popup_atcursor(systemlist("cd " . shellescape(fnamemodify(resolve(expand('%:p')), ":h")) . " && git log --no-merges -n 1 -L " . shellescape(line("v") . "," . line(".") . ":" . resolve(expand("%:p")))), { "padding": [1,1,1,1], "pos": "botleft", "wrap": 0 })), "&filetype", "git")<CR>
 "
 " Airline
 "
