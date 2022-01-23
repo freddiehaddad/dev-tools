@@ -52,5 +52,7 @@ source ~/.zshrc
 
 # iTerm Setup
 
-TODO: Add iTerm configuration steps
+* Install and run iTem
+* Import the Nord colorscheme
+* Import the user profile
 
