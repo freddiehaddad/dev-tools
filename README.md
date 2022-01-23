@@ -12,10 +12,12 @@ Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+For Vim
+
 Install Homebrew Packages
 
 ```text
-brew bundle
+brew bundle ./vim/Brewfile
 ```
 
 Install vim-plug
@@ -27,13 +29,13 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 Create a symbolic link to the vimrc file.
 
 ```text
-ln -s $(pwd)/vimrc ~/.vimrc
+ln -s $(pwd)/vim/vimrc ~/.vimrc
 ```
 
 Install Plugins
 
 ```text
-vim -es -u plugrc -i NONE -c "PlugInstall" -c "qa"
+vim -es -u ./vim/plugrc -i NONE -c "PlugInstall" -c "qa"
 ```
 
 TODO: Add shell config files section
