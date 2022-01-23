@@ -94,7 +94,7 @@ nnoremap <leader>nt <cmd>NERDTreeToggle<cr>
 nnoremap <leader>nr <cmd>NERDTreeRefreshRoot<cr>
 
 " Git
-nmap <silent><leader>g :call <SID>show_git_log()<CR>
+nmap <silent><leader>gl :call <SID>show_git_log()<CR>
 
 " CoC
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
