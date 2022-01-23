@@ -12,12 +12,46 @@ Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+For NeoVim
+
+Install Homebrew Packages
+
+```text
+brew bundle Brewfile.nvim
+```
+
+switch to the `nvim` directory
+
+```text
+cd nvim
+```
+
+Clone the Packer Plugin Manager
+
+```text
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+```
+
+Point NeoVim to the Configuration Files
+
+```text
+mkdir -p ~/.config/nvim
+ln -s -f $(pwd)/init.lua ~/.config/nvim/init.lua
+ln -s -f $(pwd)/lua ~/.config/nvim/lua
+```
+
 For Vim
 
 Install Homebrew Packages
 
 ```text
-brew bundle ./vim/Brewfile
+brew bundle Brewfile.vim
+```
+
+switch to the `vim` directory
+
+```text
+cd nvim
 ```
 
 Install vim-plug
