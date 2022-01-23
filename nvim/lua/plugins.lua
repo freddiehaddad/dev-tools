@@ -1,6 +1,6 @@
 -- Automatically run PackerCompile when this file is modified
 vim.cmd([[
-  augroup packer_user_config
+  augroup reload_plugins_file
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
@@ -17,17 +17,35 @@ return require('packer').startup({ function(use)
     requires = {
       {'nvim-lua/plenary.nvim'},
       {'nvim-treesitter/nvim-treesitter'},
-    }
+    },
+  }
+
+  -- File Explorer
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+    },
+  }
+
+  -- Git Integration
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
   }
 
   -- Nord theme
   use 'shaunsingh/nord.nvim'
-end,
-config = {
-  display = {
-    open_fn = function()
-      return require('packer.util').float({ border = 'single' })
-    end
+
+  end,
+  config = {
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'single' })
+      end
+    }
   }
-}})
+})
 

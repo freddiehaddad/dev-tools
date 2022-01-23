@@ -1,8 +1,8 @@
--- Automatically run PackerCompile when this file is modified
+-- Automatically reload this file when updated
 vim.cmd([[
-  augroup packer_user_config
+  augroup packer_keybinds_file
     autocmd!
-    autocmd BufWritePost keybinds.lua source <afile> | PackerCompile
+    autocmd BufWritePost keybinds.lua source <afile>
   augroup end
 ]])
 
@@ -28,3 +28,8 @@ map("n", "<Leader>fb", "<CMD>Telescope buffers<CR>")
 map("n", "<Leader>ff", "<CMD>Telescope find_files<CR>")
 map("n", "<Leader>fg", "<CMD>Telescope live_grep<CR>")
 map("n", "<Leader>fh", "<CMD>Telescope help_tags<CR>")
+
+-- Nvim Tree
+map("n", "<Leader>nt", "<CMD>NvimTreeToggle<CR>")
+map("n", "<Leader>nf", "<CMD>NvimTreeFindFile<CR>")
+
