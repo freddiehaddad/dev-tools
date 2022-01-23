@@ -35,14 +35,16 @@ Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
+
 "
 " Theme Settings
 "
 set termguicolors
 colorscheme nord
 
+
 "
-" Editor Settins
+" Editor Settings
 "
 set nu
 set cursorline
@@ -56,56 +58,50 @@ set nowritebackup
 set updatetime=300
 set shortmess+=c
 
+
+"
+" Plugin Settings
+"
+let g:AirlineTheme = "nord"
+let g:airline_powerline_fonts = 1
+
+" NERDTree
+let g:WebDevIconsOS = 'Darwin'
+
+" CoC
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+
 "
 " Keybinds
 "
 let mapleader = " "
 
+" Window Navigation
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
+" Fuzzy Search
 nnoremap <leader>fb <cmd>Buffers<cr>
 nnoremap <leader>ff <cmd>Files<cr>
 nnoremap <leader>fg <cmd>Rg<cr>
 nnoremap <leader>fh <cmd>Helptags<cr>
 
-nnoremap <leader>et <cmd>NERDTreeToggle<cr>
+" File Explorer
+nnoremap <leader>nt <cmd>NERDTreeToggle<cr>
+nnoremap <leader>nr <cmd>NERDTreeRefreshRoot<cr>
 
-"
 " Git
-"
-nmap <silent><leader>g :call setbufvar(winbufnr(popup_atcursor(systemlist("cd " . shellescape(fnamemodify(resolve(expand('%:p')), ":h")) . " && git log --no-merges --no-patch -n 1 -L " . shellescape(line("v") . "," . line(".") . ":" . resolve(expand("%:p")))), { "padding": [1,1,1,1], "pos": "botleft", "wrap": 1, "maxwidth": 60 })), "&filetype", "git")<CR>
+nmap <silent><leader>g :call <SID>show_git_log()<CR>
 
-"
-" Airline
-"
-let g:AirlineTheme = "nord"
-let g:airline_powerline_fonts = 1
-
-"
-" NERDTree
-"
-let g:WebDevIconsOS = 'Darwin'
-
-"
 " CoC
-"
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
 inoremap <silent><expr> <c-@> coc#refresh()
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -114,33 +110,12 @@ nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
@@ -185,21 +160,57 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 command! -nargs=0 Format :call CocActionAsync('format')
 
 " Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-"
 " Floaterm
-"
 let g:floaterm_keymap_new    = '<leader>tt'
 let g:floaterm_keymap_prev   = '<leader>tp'
 let g:floaterm_keymap_next   = '<leader>tn'
 let g:floaterm_keymap_toggle = '<leader>th'
 let g:floaterm_keymap_kill   = '<leader>tk'
+
+
+"
+" Automated Actions
+"
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+
+"
+" Functions
+"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+function! s:show_git_log() abort
+  let file_directory = shellescape(fnamemodify(resolve(expand('%:p')), ":h"))
+  let lines = shellescape(line("v") . "," . line(".") . ":" . resolve(expand("%:p")))
+  let message = systemlist("cd " . file_directory . " && git log --no-merges --no-patch -n 1 -L " . lines)
+  let options = { "padding": [1,1,1,1], "pos": "botleft", "wrap": 1, "maxwidth": 60 }
+  call setbufvar(winbufnr(popup_atcursor(message, options)), "&filetype", "git")
+endfunction
+
