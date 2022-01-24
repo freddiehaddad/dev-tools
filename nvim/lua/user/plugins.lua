@@ -1,9 +1,9 @@
 -- Automatically run PackerCompile when this file is modified
 vim.cmd([[
-  augroup reload_plugins_file
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
+augroup reload_plugins_file
+autocmd!
+autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+augroup end
 ]])
 
 -- Configure Packer (plugin manager)
@@ -19,6 +19,12 @@ return require('packer').startup({ function(use)
       {'nvim-treesitter/nvim-treesitter'},
     },
   }
+
+  -- Code completion
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'neovim/nvim-lspconfig'
+  use 'williamboman/nvim-lsp-installer'
 
   -- File Explorer
   use {
