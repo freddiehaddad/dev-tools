@@ -79,3 +79,11 @@ telescope.setup {
   }
 }
 
+local fzf_lib_status_ok, _ = pcall(require, "fzf_lib")
+if not fzf_lib_status_ok then
+  vim.notify("fzflib plugin not found!")
+  return
+end
+
+telescope.load_extension("fzf")
+
