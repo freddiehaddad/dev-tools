@@ -1,11 +1,11 @@
-local status_ok, cmp = pcall(require, "cmp")
-if not status_ok then
+local cmp_status_ok, cmp = pcall(require, "cmp")
+if not cmp_status_ok then
   vim.notify("cmp plugin not found!")
   return
 end
 
-local status_ok, luasnip = pcall(require, "luasnip")
-if not status_ok then
+local luasnip_status_ok, luasnip = pcall(require, "luasnip")
+if not luasnip_status_ok then
   vim.notify("luasnip plugin not found!")
   return
 end
@@ -14,10 +14,9 @@ require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
   local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(coo, col):match "%s"
+  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
---   פּ ﯟ   some other good icons
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 local kind_icons = {
   Text = "",
@@ -90,15 +89,17 @@ cmp.setup {
       fallback()
     end
   end, {
-  "i",
-  "s",
-}),
+    "i",
+    "s",
+  }),
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       vim_item.menu = ({
+        nvim_lsp = "[L]",
+        nvim_lua = "[U]",
         luasnip = "[S]",
         buffer = "[B]",
         path = "[P]",
@@ -107,6 +108,8 @@ cmp.setup {
     end,
   },
   sources = {
+    { name = "nvim_lsp" },
+    { name = "nvim_lua" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },

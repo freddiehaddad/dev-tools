@@ -1,4 +1,4 @@
-# Vim Setup
+# Neo(Vim) Setup
 
 Clone this repository.
 
@@ -12,7 +12,7 @@ Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-For NeoVim
+## For NeoVim
 
 Install Homebrew Packages
 
@@ -20,16 +20,25 @@ Install Homebrew Packages
 brew bundle Brewfile.nvim
 ```
 
+After installing Homebrew bundle, follow the output instructions for setting up your shell.  Also, visit the package maintainers github repos for instructions not outputted from Homebrew.
+
 switch to the `nvim` directory
 
 ```text
 cd nvim
 ```
 
-Clone the Packer Plugin Manager
+Some needed shell settings
 
 ```text
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+echo 'export EDITOR=nvim' >> ~/.zshrc
+echo 'export VISUAL=nvim' >> ~/.zshrc
+echo 'alias cat=bat' >> ~/.zshrc
+echo 'alias ls="lsd -l"' >> ~/.zshrc
+echo 'alias vim=nvim' >> ~/.zshrc
+echo 'export FZF_DEFAULT_OPTS="--color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C,pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B"' >> ~/.zshrc
+echo 'export BAT_THEME="Nord"' >> ~/.zshrc
+source ~/.zshrc
 ```
 
 Point NeoVim to the Configuration Files
@@ -40,13 +49,15 @@ ln -s -f $(pwd)/init.lua ~/.config/nvim/init.lua
 ln -s -f $(pwd)/lua ~/.config/nvim/lua
 ```
 
-For Vim
+## For Vim
 
 Install Homebrew Packages
 
 ```text
 brew bundle Brewfile.vim
 ```
+
+After installing Homebrew bundle, follow the output instructions for setting up your shell.  Also, visit the package maintainers github repos for instructions not outputted from Homebrew.
 
 switch to the `vim` directory
 
@@ -72,7 +83,7 @@ Install Plugins
 vim -es -u ./vim/plugrc -i NONE -c "PlugInstall" -c "qa"
 ```
 
-TODO: Add shell config files section
+Some needed shell settings
 
 ```text
 echo 'export EDITOR=vim' >> ~/.zshrc
