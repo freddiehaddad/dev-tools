@@ -3,6 +3,7 @@
 require 'user.options'
 require 'user.keymaps'
 require 'user.plugins'
+require 'user.colorscheme'
 
 -- Plugin settings
 -- require 'configs.nvim-tree'

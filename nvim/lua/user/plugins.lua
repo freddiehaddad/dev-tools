@@ -6,7 +6,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
     'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path,
   }
-  print 'Installing packer, restart Neovim after...'
+  vim.notify('Installing packer, restart Neovim after...')
   vim.cmd [[packadd packer.nvim]]
 end
 
@@ -21,7 +21,7 @@ vim.cmd [[
 -- Use a protected call so we don't crash on first use
 local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
-  print 'Failure loading packer!'
+  vim.notify('Failure loading packer!')
   return
 end
 
@@ -36,7 +36,17 @@ packer.init {
 
 -- Configure Packer (plugin manager)
 return packer.startup(function(use)
-  use { "wbthomason/packer.nvim" }
+  -- Plugin manager
+  use 'wbthomason/packer.nvim'
+
+  -- Popup API
+  use {
+    'nvim-lua/popup.nvim',
+    requires = {{ 'nvim-lua/plenary.nvim' }}
+  }
+
+  -- Colorschemes
+  use 'shaunsingh/nord.nvim'
   
   -- Setup packer after bootstrap
   if PACKER_BOOTSTRAP then
