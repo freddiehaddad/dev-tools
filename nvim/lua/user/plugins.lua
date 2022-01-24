@@ -1,57 +1,46 @@
--- Automatically run PackerCompile when this file is modified
-vim.cmd([[
-augroup reload_plugins_file
-autocmd!
-autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-augroup end
-]])
+local fn = vim.fn
+
+-- Automatically install packer
+local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = fn.system {
+    'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path,
+  }
+  print 'Installing packer, restart Neovim after...'
+  vim.cmd [[packadd packer.nvim]]
+end
+
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd [[
+  augroup reload_plugins_file
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
+
+-- Use a protected call so we don't crash on first use
+local status_ok, packer = pcall(require, 'packer')
+if not status_ok then
+  print 'Failure loading packer!'
+  return
+end
+
+-- Have packer use a popup window
+packer.init {
+  display = {
+    open_fn = function()
+      return require('packer.util').float { border = 'rounded' }
+    end,
+  },
+}
 
 -- Configure Packer (plugin manager)
-return require('packer').startup({ function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-
-  -- Fuzzy search
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = {
-      {'nvim-lua/plenary.nvim'},
-      {'nvim-treesitter/nvim-treesitter'},
-    },
-  }
-
-  -- Code completion
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
-
-  -- File Explorer
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-    },
-  }
-
-  -- Git Integration
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
-  }
-
-  -- Nord theme
-  use 'shaunsingh/nord.nvim'
-
-  end,
-  config = {
-    display = {
-      open_fn = function()
-        return require('packer.util').float({ border = 'single' })
-      end
-    }
-  }
-})
+return packer.startup(function(use)
+  use { "wbthomason/packer.nvim" }
+  
+  -- Setup packer after bootstrap
+  if PACKER_BOOTSTRAP then
+    require('packer').sync()
+  end
+end)
 
