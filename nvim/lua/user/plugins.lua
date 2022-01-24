@@ -60,6 +60,9 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
 
+  -- Telescope
+  use "nvim-telescope/telescope.nvim"
+
   -- Colorschemes
   use "shaunsingh/nord.nvim"
   

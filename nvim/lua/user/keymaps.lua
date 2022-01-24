@@ -32,6 +32,12 @@ keymap("n", "<C-S-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-S-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-S-Right>", ":vertical resize +2<CR>", opts)
 
+-- Fuzzy Searching
+keymap("n", "<Leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<Leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", opts)
+keymap("n", "<Leader>fh", ":Telescope help_tags<CR>", opts)
+
 -- Buffer Navigation
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
