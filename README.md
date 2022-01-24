@@ -49,6 +49,8 @@ ln -s -f $(pwd)/init.lua ~/.config/nvim/init.lua
 ln -s -f $(pwd)/lua ~/.config/nvim/lua
 ```
 
+When you run NeoVim, you can use `:checkhealth` to see if anything is missing or misconfigured.
+
 ## For Vim
 
 Install Homebrew Packages
