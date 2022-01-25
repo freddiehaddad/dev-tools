@@ -6,7 +6,7 @@ if not status_ok then
   return
 end
 
-local colorscheme = vim.notify(vim.g.colors_name)
+local colorscheme = vim.g.colors_name
 
 local config = {
   options = {
