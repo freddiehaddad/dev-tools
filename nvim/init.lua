@@ -7,4 +7,6 @@ require "user.lsp"
 require "user.telescope"
 require "user.treesitter"
 require "user.gitsigns"
+require "user.nvim-web-devicons"
+require "user.nvim-tree"
 
