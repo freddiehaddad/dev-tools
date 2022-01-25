@@ -42,6 +42,8 @@ keymap("n", "<Leader>fh", ":Telescope help_tags<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
+-- Git
+keymap("n", "<Leader>gb", ":Gitsigns blame_line<CR>", opts)
 
 -- Terminal
 
