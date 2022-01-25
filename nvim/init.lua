@@ -9,4 +9,5 @@ require "user.treesitter"
 require "user.gitsigns"
 require "user.nvim-web-devicons"
 require "user.nvim-tree"
+require "user.lualine"
 

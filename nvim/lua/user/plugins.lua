@@ -70,6 +70,14 @@ return packer.startup(function(use)
     run = "make"
   }
 
+  -- Statusline
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {
+      'kyazdani42/nvim-web-devicons'
+    },
+  }
+
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
@@ -87,7 +95,7 @@ return packer.startup(function(use)
 
   -- Colorschemes
   use "shaunsingh/nord.nvim"
-  
+
   -- Setup packer after bootstrap
   if PACKER_BOOTSTRAP then
     require("packer").sync()
