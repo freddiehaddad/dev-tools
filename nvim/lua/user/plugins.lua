@@ -38,9 +38,9 @@ packer.init {
 return packer.startup(function(use)
   -- Plugin manager
   use "wbthomason/packer.nvim"
-  use "nvim-lua/plenary.nvim"
 
-  -- Popup API
+  -- Sharded APIs
+  use "nvim-lua/plenary.nvim"
   use "nvim-lua/popup.nvim"
 
   -- cmp plugins
