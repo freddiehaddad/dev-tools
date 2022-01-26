@@ -2,13 +2,13 @@
 
 Clone this repository.
 
-```text
+```bash
 git clone https://github.com/freddiehaddad/dev-tools.git
 ```
 
 Install Homebrew
 
-```text
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
@@ -16,7 +16,7 @@ Install Homebrew
 
 Install Homebrew Packages
 
-```text
+```bash
 brew bundle Brewfile.nvim
 ```
 
@@ -24,13 +24,13 @@ After installing Homebrew bundle, follow the output instructions for setting up 
 
 switch to the `nvim` directory
 
-```text
+```bash
 cd nvim
 ```
 
 Some needed shell settings
 
-```text
+```bash
 echo 'export EDITOR=nvim' >> ~/.zshrc
 echo 'export VISUAL=nvim' >> ~/.zshrc
 echo 'alias cat=bat' >> ~/.zshrc
@@ -43,7 +43,7 @@ source ~/.zshrc
 
 Point NeoVim to the Configuration Files
 
-```text
+```bash
 mkdir -p ~/.config/nvim
 ln -s -f $(pwd)/init.lua ~/.config/nvim/init.lua
 ln -s -f $(pwd)/lua ~/.config/nvim/lua
@@ -55,7 +55,7 @@ When you run NeoVim, you can use `:checkhealth` to see if anything is missing or
 
 Install Homebrew Packages
 
-```text
+```bash
 brew bundle Brewfile.vim
 ```
 
@@ -63,31 +63,31 @@ After installing Homebrew bundle, follow the output instructions for setting up 
 
 switch to the `vim` directory
 
-```text
+```bash
 cd nvim
 ```
 
 Install vim-plug
 
-```text
+```bash
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
 Create a symbolic link to the vimrc file.
 
-```text
+```bash
 ln -s $(pwd)/vim/vimrc ~/.vimrc
 ```
 
 Install Plugins
 
-```text
+```bash
 vim -es -u ./vim/plugrc -i NONE -c "PlugInstall" -c "qa"
 ```
 
 Some needed shell settings
 
-```text
+```bash
 echo 'export EDITOR=vim' >> ~/.zshrc
 echo 'export VISUAL=vim' >> ~/.zshrc
 echo 'alias cat=bat' >> ~/.zshrc
