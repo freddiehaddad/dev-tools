@@ -7,9 +7,7 @@ local options = {
   hlsearch = true,                         -- highlight all matches on previous search pattern
   ignorecase = true,                       -- ignore case in search patterns
   pumheight = 10,                          -- pop up menu height
-  showmode = false,                        -- we don"t need to see things like -- INSERT -- anymore
   smartcase = true,                        -- smart insenstive case searching
-  smartindent = true,                      -- make indenting smarter again
   splitbelow = true,                       -- force all horizontal splits to go below current window
   splitright = true,                       -- force all vertical splits to go to the right of current window
   swapfile = false,                        -- creates a swapfile
@@ -25,18 +23,14 @@ local options = {
   number = true,                           -- set numbered lines
   relativenumber = false,                  -- set relative numbered lines
   signcolumn = "number",                   -- show sign colum in number column
-  wrap = false,                            -- display lines as one long line
+  wrap = true,                             -- display lines as one long line
   scrolloff = 4,                           -- number of lines to keep above and below cursor
   sidescrolloff = 4,                       -- number of lines to keep left and right of cursor
 }
 
-vim.opt.shortmess:append "c"
 vim.opt.fillchars:append "eob: "
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd "set iskeyword+=-"
-vim.cmd "set formatoptions-=cro"

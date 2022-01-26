@@ -1,6 +1,8 @@
-local status_ok, _ = pcall(require, "lspconfig")
+local plugin_name = "lspconfig"
+
+local status_ok, _ = pcall(require, plugin_name)
 if not status_ok then
-  vim.notify("lspconfig not found!")
+  vim.notify("plugin: " .. plugin_name .. " not found!")
   return
 end
 

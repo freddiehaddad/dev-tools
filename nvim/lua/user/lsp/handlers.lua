@@ -77,9 +77,9 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-  -- if client.name == "tsserver" then
-  --   client.resolved_capabilities.document_formatting = false
-  -- end
+   if client.name == "tsserver" then
+     client.resolved_capabilities.document_formatting = false
+   end
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 end
@@ -88,6 +88,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
+  vim.notify("plugin: cmp_nvim_lsp not found!")
   return
 end
 

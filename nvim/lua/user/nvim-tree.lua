@@ -35,13 +35,23 @@ vim.g.nvim_tree_add_trailing = 1
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_special_files = {}
 
-local status_ok, nvim_tree = pcall(require, "nvim-tree")
+local plugin_name = "nvim-tree"
+local status_ok, plugin = pcall(require, plugin_name)
 if not status_ok then
-  vim.notify("nvim-tree plugin not found!")
+  vim.notify("plugin: " .. plugin_name .. " not found!")
   return
 end
 
-nvim_tree.setup({
+local plugin_config_name = plugin_name .. ".config"
+local config_status_ok, plugin_config = pcall(require, plugin_config_name)
+if not config_status_ok then
+  vim.notify("plugin: " .. plugin_config_name .. " not found!")
+  return
+end
+
+local tree_cb = plugin_config.nvim_tree_callback
+
+local options = {
   auto_close = true,
   update_cwd = true,
   hijack_cursor = true,
@@ -53,12 +63,13 @@ nvim_tree.setup({
   view = {
     signcolumn = "no",
     auto_resize = true,
+    mappings = {
+      list = {
+        { key = "v", cb = tree_cb "vsplit" },
+      },
+    },
   },
-})
+}
 
--- vim.api.nvim_exec([[
---   augroup nvim_tree_auto_refresh
---   autocmd! * <buffer>
---   autocmd BufAdd * NvimTreeRefresh
---   augroup END
--- ]], false)
+plugin.setup(options)
+

@@ -1,6 +1,8 @@
-local status_ok, gitsigns = pcall(require, "gitsigns")
+local plugin_name = "gitsigns"
+
+local status_ok, plugin = pcall(require, plugin_name)
 if not status_ok then
-  vim.notify("gitsigns plugin not found!")
+  vim.notify("plugin: " .. plugin_name .. " not found!")
   return
 end
 
@@ -21,7 +23,9 @@ local function current_line_blame_formatter(_, blame_info, opts)
   return {{" " .. text, "Label"}}
 end
 
-gitsigns.setup {
+local options = {
   current_line_blame_formatter = current_line_blame_formatter
 }
+
+plugin.setup(options)
 

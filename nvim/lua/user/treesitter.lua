@@ -1,13 +1,19 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
+local plugin_name = "nvim-treesitter"
+local plugin_config_name = plugin_name .. ".configs"
+
+local status_ok, plugin_config = pcall(require, plugin_config_name)
 if not status_ok then
-  vim.notify("nvim-treesitter not found!")
+  vim.notify("plugin: " .. plugin_name .. " not found!")
   return
 end
 
-configs.setup {
+local options = {
   ensure_installed = "maintained",
   sync_install = false,
   ignore_install = { "" },
+  autopairs = {
+    enable = true,
+  },
   highlight = {
     enable = true,
     disable = { "" },
@@ -15,12 +21,13 @@ configs.setup {
   },
   indent = {
     enable = true,
-    disable = { "" },
+    disable = { "yaml" },
   },
-  rainbow = {
+  context_commentstring = {
     enable = true,
-    extended_mode = true,
-    max_file_lines = nil,
+    enable_autocmd = false,
   },
 }
+
+plugin_config.setup(options)
 

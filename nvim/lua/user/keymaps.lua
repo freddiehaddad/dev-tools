@@ -1,21 +1,11 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
-
 local keymap = vim.api.nvim_set_keymap
 
 -- Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader= " "
 vim.g.maplocalleader= " "
-
--- Modes --
---   normal_mode = "n"
---   insert_mode = "i"
---   visual_mode = "v"
---   visual_block_mode = "x"
---   term_mode = "t"
---   command_mode = "c"
 
 
 -- Normal --
@@ -38,18 +28,7 @@ keymap("n", "<Leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<Leader>fh", ":Telescope help_tags<CR>", opts)
 
--- Buffer Navigation
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Git
 keymap("n", "<Leader>gb", ":Gitsigns blame_line<CR>", opts)
-
--- Terminal
-
--- Navigation
-keymap("t", "<C-h>", "<C-\\><C-n><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-n><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-n><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-n><C-w>l", term_opts)
 
