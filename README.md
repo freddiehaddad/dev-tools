@@ -70,6 +70,15 @@ Install LunarVim
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 ```
 
+Update the LunarVim config
+
+```
+mv ~/.config/lvim/config.lua ~/.config/lvim/config.lua~
+ln -s $(pwd)/lvim/config.lua ~/.config/lvim/config.lua
+```
+
+When you start LunarVim for the first time, be sure to do a `PackerSync` as the custom config disables some plugins and installs others.
+
 # iTerm Setup
 
 * Install and run iTerm
