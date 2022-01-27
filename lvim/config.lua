@@ -11,20 +11,7 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "nord"
-
--- Hide the arrow icons next to NvimTree directories
-lvim.builtin.nvimtree.show_icons.folder_arrows = 0
-
--- Disable Barbar (lvim api value boolean doens't work)
-lvim.builtin.bufferline.active = false
-lvim.builtin.bufferline.on_config_done = function()
-  vim.api.nvim_exec([[BarbarDisable]], true)
-  vim.api.nvim_exec([[set showtabline=0]], false)
-end
-vim.api.nvim_exec([[set showtabline=0]], false)
-
-vim.opt.cmdheight = 1
+lvim.colorscheme = "onedarker"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -87,6 +74,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "java",
   "yaml",
   "markdown",
+  "go",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -149,13 +137,23 @@ lvim.builtin.treesitter.highlight.enabled = true
 --   },
 -- }
 
--- Additional Plugins
-lvim.plugins = {
-  { "shaunsingh/nord.nvim" },
-}
+-- Freddie Haddad Configuration Start
 
--- Lualine Tweaks
-local progress = function()
+-- Disable Barbar plugin (causes it to be unisntalled on PackerSync)
+lvim.builtin.bufferline.active = false
+
+-- Editor Settings
+vim.opt.showtabline = 0
+vim.opt.fillchars:append("eob: ")
+vim.opt.mouse = ""
+vim.opt.cmdheight = 1
+vim.opt.clipboard:remove("unnamedplus")
+
+-- NvimTree
+lvim.builtin.nvimtree.show_icons.folder_arrows = 0
+
+-- Lualine
+local scrollbar = function()
 	local current_line = vim.fn.line(".")
 	local total_lines = vim.fn.line("$")
 	local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
@@ -207,11 +205,37 @@ lvim.builtin.lualine.sections = {
   lualine_c = { "mode" },
   lualine_x = { diff},
   lualine_y = { filetype, "encoding" },
-  lualine_z = { location, progress },
+  lualine_z = { location, scrollbar },
 }
+
+-- Additional Plugins
+lvim.plugins = {
+    { "shaunsingh/nord.nvim" }
+}
+
+-- Configure Theme
+local function setup_theme()
+  local plugin_name = "nord"
+  local status_ok, plugin = pcall(require, plugin_name)
+  if not status_ok then
+    vim.notify("plugin: " .. plugin_name .. " not found!")
+    return
+  end
+  vim.g.nord_contrast = false
+  vim.g.nord_borders = false
+  vim.g.nord_disable_background = true
+  vim.g.nord_cursorline_transparent = false
+  vim.g.nord_enable_sidebar_background = true
+  vim.g.nord_italic = false
+  plugin.set()
+  lvim.colorscheme = "nord"
+end
+
+setup_theme()
+
+-- Freddie Haddad Configuration End
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
 -- }
-
