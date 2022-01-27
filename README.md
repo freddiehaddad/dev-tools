@@ -1,4 +1,4 @@
-# LunarVim Setup
+# Dev Environment Setup
 
 Clone this repository
 
@@ -51,6 +51,17 @@ alias ls="lsd -l"
 
 # glow
 alias glow="glow -s ~/projects/dev-tools/glow/nord.json"
+```
+
+Install Python and Node using `asdf`
+
+```text
+asdf plugin add nodejs
+asdf install nodejs lts
+asdf global nodejs lts
+asdf plugin add python
+asdf install python latest
+asdf global python latest
 ```
 
 Install LunarVim
