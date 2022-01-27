@@ -1,105 +1,67 @@
-# Neo(Vim) Setup
+# LunarVim Setup
 
-Clone this repository.
-
-```bash
-git clone https://github.com/freddiehaddad/dev-tools.git
-```
+Clone this repository
 
 Install Homebrew
 
-```bash
+```text
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-## For NeoVim
+Install packages
 
-Install Homebrew Packages
-
-```bash
-brew bundle Brewfile.nvim
+```
+brew bundle
 ```
 
-After installing Homebrew bundle, follow the output instructions for setting up your shell.  Also, visit the package maintainers github repos for instructions not outputted from Homebrew.
+Update your shell environment variables according to the instructed output from Homebrew
 
-switch to the `nvim` directory
+Visit the github repos for the remaining packages that Homebrew did not provide instructions for
 
-```bash
-cd nvim
+Update your shell environement
+
+```zsh
+# asdf
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# Add LunarVim to path
+export PATH="$PATH:/Users/freddie.haddad/.local/bin"
+
+# Fzf - colorscheme
+export FZF_DEFAULT_OPTS="--color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C,pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B"
+
+# zoxide
+eval "$(zoxide init zsh)"
+
+# Bat - colorscheme
+export BAT_THEME="Nord"
+alias cat="bat"
+
+# LunarVim aliases
+export EDITOR="lvim"
+export VISUAL="lvim"
+alias vim="lvim"
+alias nvim="lvim"
+
+# fd
+alias find="fd"
+
+# lsd
+alias ls="lsd -l"
+
+# glow
+alias glow="glow -s ~/projects/dev-tools/glow/nord.json"
 ```
 
-Some needed shell settings
+Install LunarVim
 
-```bash
-echo 'export EDITOR=nvim' >> ~/.zshrc
-echo 'export VISUAL=nvim' >> ~/.zshrc
-echo 'alias cat=bat' >> ~/.zshrc
-echo 'alias ls="lsd -l"' >> ~/.zshrc
-echo 'alias vim=nvim' >> ~/.zshrc
-echo 'export FZF_DEFAULT_OPTS="--color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C,pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B"' >> ~/.zshrc
-echo 'export BAT_THEME="Nord"' >> ~/.zshrc
-source ~/.zshrc
-```
-
-Point NeoVim to the Configuration Files
-
-```bash
-mkdir -p ~/.config/nvim
-ln -s -f $(pwd)/init.lua ~/.config/nvim/init.lua
-ln -s -f $(pwd)/lua ~/.config/nvim/lua
-```
-
-When you run NeoVim, you can use `:checkhealth` to see if anything is missing or misconfigured.
-
-## For Vim
-
-Install Homebrew Packages
-
-```bash
-brew bundle Brewfile.vim
-```
-
-After installing Homebrew bundle, follow the output instructions for setting up your shell.  Also, visit the package maintainers github repos for instructions not outputted from Homebrew.
-
-switch to the `vim` directory
-
-```bash
-cd nvim
-```
-
-Install vim-plug
-
-```bash
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
-
-Create a symbolic link to the vimrc file.
-
-```bash
-ln -s $(pwd)/vim/vimrc ~/.vimrc
-```
-
-Install Plugins
-
-```bash
-vim -es -u ./vim/plugrc -i NONE -c "PlugInstall" -c "qa"
-```
-
-Some needed shell settings
-
-```bash
-echo 'export EDITOR=vim' >> ~/.zshrc
-echo 'export VISUAL=vim' >> ~/.zshrc
-echo 'alias cat=bat' >> ~/.zshrc
-echo 'alias ls="lsd -l"' >> ~/.zshrc
-echo 'export FZF_DEFAULT_OPTS="--color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C,pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B"' >> ~/.zshrc
-echo 'export BAT_THEME="Nord"' >> ~/.zshrc
-source ~/.zshrc
+```text
+bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 ```
 
 # iTerm Setup
 
-* Install and run iTem
+* Install and run iTerm
 * Import the Nord colorscheme
 * Import the user profile
 
