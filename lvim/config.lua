@@ -151,6 +151,9 @@ lvim.builtin.bufferline.active = false
 -- Telescope
 lvim.builtin.telescope.defaults.borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
 
+-- Gitsigns
+lvim.builtin.gitsigns.opts.preview_config.border = "single"
+
 -- Editor Settings
 vim.opt.showtabline = 0
 vim.opt.fillchars:append("eob: ")
