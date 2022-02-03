@@ -161,6 +161,7 @@ vim.opt.mouse = ""
 vim.opt.cmdheight = 1
 vim.opt.clipboard:remove("unnamedplus")
 vim.wo.wrap = true
+lvim.builtin.dap.active = true
 
 -- NvimTree
 lvim.builtin.nvimtree.show_icons.folder_arrows = 0
