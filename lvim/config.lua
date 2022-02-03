@@ -14,12 +14,11 @@ lvim.format_on_save = true
 lvim.colorscheme = "onedarker"
 vim.opt.whichwrap:remove("h")
 vim.opt.whichwrap:remove("l")
-vim.wo.wrap = true
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+-- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = false
 -- edit a default keymapping
@@ -149,12 +148,16 @@ lvim.builtin.treesitter.indent = {
 -- Disable Barbar plugin (causes it to be unisntalled on PackerSync)
 lvim.builtin.bufferline.active = false
 
+-- Telescope
+lvim.builtin.telescope.defaults.borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+
 -- Editor Settings
 vim.opt.showtabline = 0
 vim.opt.fillchars:append("eob: ")
 vim.opt.mouse = ""
 vim.opt.cmdheight = 1
 vim.opt.clipboard:remove("unnamedplus")
+vim.wo.wrap = true
 
 -- NvimTree
 lvim.builtin.nvimtree.show_icons.folder_arrows = 0
