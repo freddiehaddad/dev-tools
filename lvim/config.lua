@@ -14,6 +14,7 @@ lvim.format_on_save = true
 lvim.colorscheme = "onedarker"
 vim.opt.whichwrap:remove("h")
 vim.opt.whichwrap:remove("l")
+vim.wo.wrap = true
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
