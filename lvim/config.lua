@@ -161,7 +161,6 @@ vim.opt.mouse = ""
 vim.opt.cmdheight = 1
 vim.opt.clipboard:remove("unnamedplus")
 vim.wo.wrap = true
-lvim.builtin.dap.active = true
 
 -- NvimTree
 lvim.builtin.nvimtree.show_icons.folder_arrows = 0
@@ -224,7 +223,10 @@ lvim.builtin.lualine.sections = {
 
 -- Additional Plugins
 lvim.plugins = {
-    { "shaunsingh/nord.nvim" }
+    { "shaunsingh/nord.nvim" },
+    { "nvim-telescope/telescope-dap.nvim" },
+    { "rcarriga/nvim-dap-ui" },
+    { "leoluz/nvim-dap-go"}
 }
 
 -- Configure Theme
@@ -247,6 +249,62 @@ end
 
 setup_theme()
 
+-- Configure Debugging
+local function setup_debugging()
+  lvim.builtin.dap.active = true
+
+  local status_ok
+  local dap_plugin_name = "dap"
+  local dapui_plugin_name = "dapui"
+  local dapgo_plugin_name = "dap-go"
+  local dap, dapgo, dapui, telescope
+
+  status_ok, telescope = pcall(require, "telescope")
+  if not status_ok then
+    vim.notify("plugin: " .. "telescope" .. " not found!")
+    return
+  end
+
+  status_ok, _ = pcall(telescope.load_extension, "dap")
+  if not status_ok then
+    vim.notify("plugin: " .. "telescope-dap" .. " not found!")
+    return
+  end
+
+  status_ok, dap = pcall(require, dap_plugin_name)
+  if not status_ok then
+    vim.notify("plugin: " .. dap_plugin_name .. " not found!")
+    return
+  end
+
+  status_ok, dapgo = pcall(require, dapgo_plugin_name)
+  if not status_ok then
+    vim.notify("plugin: " .. dapgo_plugin_name .. " not found!")
+    return
+  end
+
+  dapgo.setup()
+
+  status_ok, dapui = pcall(require, dapui_plugin_name)
+  if not status_ok then
+    vim.notify("plugin: " .. dapui_plugin_name .. " not found!")
+    return
+  end
+
+  dapui.setup()
+
+  dap.listeners.after.event_initialized["dapui_config"] = function()
+    dapui.open()
+  end
+  dap.listeners.before.event_terminated["dapui_config"] = function()
+    dapui.close()
+  end
+  dap.listeners.before.event_exited["dapui_config"] = function()
+    dapui.close()
+  end
+end
+
+setup_debugging()
 -- Freddie Haddad Configuration End
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
