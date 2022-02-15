@@ -27,6 +27,13 @@ else
   vim.notify("Extension: fzf not installed!")
 end
 
+status_ok, _ = pcall(require, "dap")
+if status_ok then
+  table.insert(extensions, "dap")
+else
+  vim.notify("Extension: dap not installed!")
+end
+
 plugin.setup(options)
 
 for _, v in pairs(extensions) do

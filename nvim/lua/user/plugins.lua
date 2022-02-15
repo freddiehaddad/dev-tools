@@ -45,16 +45,28 @@ return packer.startup(function(use)
   use {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/nvim-cmp",
-  }
-
-  use {
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
   }
 
   use {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
+    run = ":TSUpdate"
+  }
+
+  use {
+    "rcarriga/nvim-dap-ui",
+    requires = { "mfussenegger/nvim-dap" }
+  }
+
+  use {
+    "leoluz/nvim-dap-go",
+    requires = { "mfussenegger/nvim-dap" }
+  }
+
+  use {
+    "nvim-telescope/telescope-dap.nvim",
+    requires = { "mfussenegger/nvim-dap", "nvim-telescope/telescope.nvim" }
   }
 
   use {
