@@ -9,7 +9,6 @@ end
 -- Components
 local mode = {
   "mode",
-  padding = { left = 1, right = 0, },
 }
 
 local diagnostics = {
@@ -37,12 +36,18 @@ local filename = {
 local diff = {
   "diff",
   colored = true,
+  symbols = {
+    added = " ",
+    modified = " ",
+    removed = " "
+  },
+  padding = 0,
 }
 
 local filetype = {
   "filetype",
   colored = true,
-  icon_only = true,
+  icon_only = false,
 }
 
 local fileformat = {
@@ -52,6 +57,7 @@ local fileformat = {
     dos = "",
     mac = "",
   },
+  padding = { left = 0, right = 1, },
 }
 
 local location = {
@@ -80,11 +86,19 @@ local config = {
   sections = {
     lualine_a = { mode },
     lualine_b = { diagnostics },
-    lualine_c = { branch },
-    lualine_x = { filename, diff},
+    lualine_c = { branch, diff },
+    lualine_x = { filename },
     lualine_y = { filetype, fileformat },
     lualine_z = { location, scrollbar },
-  }
+  },
+  inactive_sections = {
+    lualine_a = { mode },
+    lualine_b = { diagnostics },
+    lualine_c = { branch, diff },
+    lualine_x = { filename },
+    lualine_y = { filetype, fileformat },
+    lualine_z = { location, scrollbar },
+  },
 }
 
 -- Plugin Initialization

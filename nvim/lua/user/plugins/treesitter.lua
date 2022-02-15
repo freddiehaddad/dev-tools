@@ -1,6 +1,6 @@
-local status_ok, plugin, config
+local _, status_ok, config
 
-status_ok, plugin = pcall(require, "nvim-treesitter")
+status_ok, _ = pcall(require, "nvim-treesitter")
 if not status_ok then
   vim.notify("Plugin: nvim-treesitter not installed!")
   return
@@ -14,7 +14,7 @@ end
 
 config.setup({
   highlight = {
-    enable = true,
+    enable = false,
   },
 })
 
