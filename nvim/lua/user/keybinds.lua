@@ -1,3 +1,5 @@
+local status_ok, _
+
 -- Alias to fully qualified name for keymap API
 local keymap = vim.api.nvim_set_keymap
 
@@ -16,7 +18,6 @@ keymap("n", "<C-k>", "<C-w>k", options)
 keymap("n", "<C-l>", "<C-w>l", options)
 
 -- DAP
-local status_ok, _
 status_ok, _ = pcall(require, "telescope")
 if status_ok then
   keymap("n", "<F5>", ":lua require'dap'.continue()<CR>", options)
@@ -27,7 +28,6 @@ if status_ok then
 end
 
 -- Telescope
-local status_ok, _
 status_ok, _ = pcall(require, "telescope")
 if status_ok then
   keymap("n", "<Leader>fb", ":Telescope buffers<CR>", options)
@@ -36,7 +36,6 @@ if status_ok then
 end
 
 -- GitSigns
-local status_ok, _
 status_ok, _ = pcall(require, "gitsigns")
 if status_ok then
   keymap("n", "<Leader>gb", ":Gitsigns blame_line<CR>", options)
