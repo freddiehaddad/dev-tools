@@ -7,6 +7,7 @@ local options = {
   signcolumn = "yes",
   splitbelow = true,
   splitright = true,
+  timeoutlen = 500,
   wrap = false,
 }
 
