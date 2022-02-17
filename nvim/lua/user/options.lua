@@ -5,8 +5,8 @@ local options = {
   number = true,
   pumheight = 20,
   signcolumn = "yes",
-  splitbelow = true,
-  splitright = true,
+  splitbelow = false,
+  splitright = false,
   timeoutlen = 500,
   wrap = false,
 }

@@ -35,7 +35,7 @@ packer.init {
 return packer.startup(function(use)
   use "wbthomason/packer.nvim"
 
-  use "shaunsingh/nord.nvim"
+  use "freddiehaddad/nord.nvim"
   use "folke/which-key.nvim"
 
   use {
@@ -56,7 +56,7 @@ return packer.startup(function(use)
   }
 
   use {
-    "rcarriga/nvim-dap-ui",
+    "freddiehaddad/nvim-dap-ui",
     requires = { "mfussenegger/nvim-dap" }
   }
 
