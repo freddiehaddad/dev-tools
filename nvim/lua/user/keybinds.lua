@@ -46,3 +46,9 @@ status_ok, _ = pcall(require, "gitsigns")
 if status_ok then
   keymap("n", "<Leader>gb", ":Gitsigns blame_line<CR>", options)
 end
+
+-- LazyGit
+status_ok, _ = pcall(require, "lazygit")
+if status_ok then
+  keymap("n", "<Leader>lg", ":LazyGit<CR>", options)
+end

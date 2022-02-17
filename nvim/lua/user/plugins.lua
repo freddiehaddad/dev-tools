@@ -15,6 +15,14 @@ if fn.empty(fn.glob(install_path)) > 0 then
   return
 end
 
+-- Autorefresh Packer on file change.
+vim.cmd([[
+  augroup AutoPackerSync
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])
+
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
@@ -74,6 +82,8 @@ return packer.startup(function(use)
     "lewis6991/gitsigns.nvim",
     requires = { "nvim-lua/plenary.nvim" }
   }
+
+  use "kdheepak/lazygit.nvim"
 
   use {
     "nvim-telescope/telescope.nvim",
