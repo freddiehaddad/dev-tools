@@ -93,9 +93,9 @@ local config = {
   },
   inactive_sections = {
     lualine_a = { mode },
-    lualine_b = { diagnostics },
+    lualine_b = { },
     lualine_c = { branch, diff },
-    lualine_x = { filename },
+    lualine_x = { },
     lualine_y = { filetype, fileformat },
     lualine_z = { location, scrollbar },
   },
