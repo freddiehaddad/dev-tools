@@ -56,7 +56,7 @@ return packer.startup(function(use)
   }
 
   use {
-    "freddiehaddad/nvim-dap-ui",
+    "rcarriga/nvim-dap-ui",
     requires = { "mfussenegger/nvim-dap" }
   }
 

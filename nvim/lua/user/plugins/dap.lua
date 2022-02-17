@@ -12,11 +12,7 @@ if not status_ok then
   return
 end
 
-local options = {
-  theme = false -- disable the built-in dap-ui theme
-}
-
-dapui.setup(options)
+dapui.setup()
 
 -- Automate DAP UI opening/closing
 dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end

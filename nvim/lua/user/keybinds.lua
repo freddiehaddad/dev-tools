@@ -27,6 +27,12 @@ if status_ok then
   keymap("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>", options)
 end
 
+-- LSP
+status_ok, _ = pcall(require, "lspconfig")
+if status_ok then
+  keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', options)
+end
+
 -- Telescope
 status_ok, _ = pcall(require, "telescope")
 if status_ok then
