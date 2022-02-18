@@ -62,6 +62,13 @@ mv ~/.config/lvim/config.lua ~/.config/lvim/config.lua~
 ln -s $(pwd)/lvim/config.lua ~/.config/lvim/config.lua
 ```
 
+LazyGit
+
+```
+mkdir -p ~/Library/Application\ Support/lazygit
+ln -s $(pwd)/lazygit/config.yml  ~/Library/Application\ Support/lazygit/config.yml
+```
+
 When you start LunarVim for the first time, be sure to do a `PackerSync` as the custom config disables some plugins and installs others.
 
 # iTerm Setup

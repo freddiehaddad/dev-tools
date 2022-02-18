@@ -83,7 +83,10 @@ return packer.startup(function(use)
     requires = { "nvim-lua/plenary.nvim" }
   }
 
-  use "kdheepak/lazygit.nvim"
+  use {
+    "kdheepak/lazygit.nvim",
+    requires = { "nvim-lua/plenary.nvim" }
+  }
 
   use {
     "nvim-telescope/telescope.nvim",

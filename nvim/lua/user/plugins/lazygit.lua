@@ -7,3 +7,4 @@ if not status_ok then
 end
 
 vim.g.lazygit_floating_window_corner_chars = { "┌", "┐", "└", "┘" }
+vim.g.lazygit_floating_window_use_plenary = 1
