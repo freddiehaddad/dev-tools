@@ -21,9 +21,6 @@ Visit the github repos for the remaining packages that Homebrew did not provide 
 Update your shell environement
 
 ```zsh
-# asdf
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
 # Add LunarVim to path
 export PATH="$PATH:/Users/freddie.haddad/.local/bin"
 
@@ -38,10 +35,9 @@ export BAT_THEME="Nord"
 alias cat="bat"
 
 # LunarVim aliases
-export EDITOR="lvim"
-export VISUAL="lvim"
-alias vim="lvim"
-alias nvim="lvim"
+export EDITOR="nvim"
+export VISUAL="nvim"
+alias vim="nvim"
 
 # fd
 alias find="fd"
@@ -51,17 +47,6 @@ alias ls="lsd -l"
 
 # glow
 alias glow="glow -s ~/projects/dev-tools/glow/nord.json"
-```
-
-Install Python and Node using `asdf`
-
-```text
-asdf plugin add nodejs
-asdf install nodejs lts
-asdf global nodejs lts
-asdf plugin add python
-asdf install python latest
-asdf global python latest
 ```
 
 Install LunarVim
