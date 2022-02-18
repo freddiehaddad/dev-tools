@@ -39,6 +39,8 @@ if status_ok then
   keymap("n", "<Leader>fb", ":Telescope buffers<CR>", options)
   keymap("n", "<Leader>ff", ":Telescope find_files<CR>", options)
   keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", options)
+  keymap("n", "<Leader>fh", ":Telescope help_tags<CR>", options)
+  keymap("n", "<Leader>fr", ":Telescope lsp_references<CR>", options)
 end
 
 -- GitSigns
