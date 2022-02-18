@@ -17,6 +17,10 @@ keymap("n", "<C-j>", "<C-w>j", options)
 keymap("n", "<C-k>", "<C-w>k", options)
 keymap("n", "<C-l>", "<C-w>l", options)
 
+-- Terminal
+keymap("n", "<C-t>", ":terminal<CR>", options)
+keymap("t", "<Esc>", "<C-\\><C-n>", options)
+
 -- DAP
 status_ok, _ = pcall(require, "telescope")
 if status_ok then
