@@ -1,14 +1,20 @@
 local status_ok, plugin
 
 -- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+status_ok, plugin = pcall(require, "cmp_nvim_lsp")
+if not status_ok then
+  vim.notify("Plugin: cmp_nvim_lsp not found!")
+  return
+end
 
 status_ok, plugin = pcall(require, "lspconfig")
 if not status_ok then
   vim.notify("Plugin: lspconfig not found!")
   return
 end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = plugin.update_capabilities(capabilities)
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = { "gopls" }
