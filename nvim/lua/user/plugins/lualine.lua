@@ -92,12 +92,12 @@ local config = {
     lualine_z = { location, scrollbar },
   },
   inactive_sections = {
-    lualine_a = { mode },
+    lualine_a = { },
     lualine_b = { },
-    lualine_c = { branch, diff },
+    lualine_c = { },
     lualine_x = { },
-    lualine_y = { filetype, fileformat },
-    lualine_z = { location, scrollbar },
+    lualine_y = { filetype },
+    lualine_z = { },
   },
 }
 

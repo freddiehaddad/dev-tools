@@ -7,6 +7,28 @@ local expand = vim.fn.expand
 local colorscheme = expand("~/.vimrc_background")
 if filereadable(colorscheme) then
   vim.cmd("source " .. colorscheme)
+
+  -- DAP UI
+  vim.cmd("hi DapUIVariable guifg=#5f8787")
+  vim.cmd("hi DapUIScope guifg=#aaaaaa")
+  vim.cmd("hi DapUIType guifg=#aaaaaa")
+  vim.cmd("hi DapUIValue guifg=#5f8787")
+  vim.cmd("hi DapUIModifiedValue guifg=#aaaaaa gui=bold")
+  vim.cmd("hi DapUIDecoration guifg=#aaaaaa")
+  vim.cmd("hi DapUIThread guifg=#999999")
+  vim.cmd("hi DapUIStoppedThread guifg=#aaaaaa")
+  vim.cmd("hi DapUIFrameName guifg=#888888")
+  vim.cmd("hi DapUISource guifg=#aaaaaa")
+  vim.cmd("hi DapUILineNumber guifg=#aaaaaa")
+  vim.cmd("hi DapUIFloatBorder guifg=#aaaaaa")
+  vim.cmd("hi DapUIWatchesEmpty guifg=#5f81a5")
+  vim.cmd("hi DapUIWatchesValue guifg=#999999")
+  vim.cmd("hi DapUIWatchesError guifg=#5f81a5")
+  vim.cmd("hi DapUIBreakpointsPath guifg=#aaaaaa")
+  vim.cmd("hi DapUIBreakpointsInfo guifg=#999999")
+  vim.cmd("hi DapUIBreakpointsCurrentLine guifg=#999999 gui=bold")
+  vim.cmd("hi DapUIBreakpointsLine guifg=#aaaaaa")
+
   return
 end
 
