@@ -80,7 +80,7 @@ local config = {
     icons_enabled = true,
     component_separators = "",
     section_separators = { left = "", right = "" },
-    theme = "nord",
+    theme = "auto",
 
   },
   sections = {

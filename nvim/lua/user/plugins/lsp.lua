@@ -7,14 +7,14 @@ if not status_ok then
   return
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = plugin.update_capabilities(capabilities)
+
 status_ok, plugin = pcall(require, "lspconfig")
 if not status_ok then
   vim.notify("Plugin: lspconfig not found!")
   return
 end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = plugin.update_capabilities(capabilities)
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = { "gopls" }
