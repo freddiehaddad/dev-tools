@@ -20,12 +20,31 @@ Visit the github repos for the remaining packages that Homebrew did not provide 
 
 Update your shell environement
 
+Base 16
+
+```zsh
+$ git clone https://github.com/chriskempson/base16-shell
+```
+
+Add to `~/.zshrc`
+
+```zsh
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/" [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
+```
+
+Open a new shell and type `base16` followed by a tab to perform tab completion.
+
+Follow the instructions [https://github.com/InspectorMustache/base16-builder-python](https://github.com/InspectorMustache/base16-builder-python) for building the `iterm` profile.
+
+To configure `nvim-dap-ui`, update the colors in the `colorscheme.lua` file.
+
+Shell
+
 ```zsh
 # Add LunarVim to path
 export PATH="$PATH:/Users/freddie.haddad/.local/bin"
 
-# Fzf - colorscheme
-export FZF_DEFAULT_OPTS="--color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C,pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B"
 
 # zoxide
 eval "$(zoxide init zsh)"
