@@ -71,6 +71,12 @@ return packer.startup(function(use)
     requires = { "mfussenegger/nvim-dap" }
   }
 
+  -- Lua
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons"
+  }
+
   use {
     "nvim-telescope/telescope-dap.nvim",
     requires = { "mfussenegger/nvim-dap", "nvim-telescope/telescope.nvim" }
