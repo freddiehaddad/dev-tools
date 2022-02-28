@@ -14,16 +14,16 @@ Install packages
 brew bundle
 ```
 
-Update your shell environment variables according to the instructed output from Homebrew
+Update your shell environment variables according to the instructed output from Homebrew.
 
-Visit the github repos for the remaining packages that Homebrew did not provide instructions for
+Visit the github repos for the remaining packages that Homebrew did not provide instructions for.
 
 Update your shell environement
 
 Base 16
 
 ```zsh
-$ git clone https://github.com/chriskempson/base16-shell
+$ git clone https://github.com/chriskempson/base16-shell ~/.config/base16-shell
 ```
 
 Add to `~/.zshrc`
@@ -35,7 +35,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/" [ -n "$PS1" ] && [ -s "$BASE16_SHELL/
 
 Open a new shell and type `base16` followed by a tab to perform tab completion.
 
-Follow the instructions [https://github.com/InspectorMustache/base16-builder-python](https://github.com/InspectorMustache/base16-builder-python) for building the `iterm` profile.
+Follow the instructions [https://github.com/InspectorMustache/base16-builder-python](https://github.com/InspectorMustache/base16-builder-python) for building the `iterm` and `fzf` profiles.
 
 To configure `nvim-dap-ui`, update the colors in the `colorscheme.lua` file.
 
@@ -45,12 +45,11 @@ Shell
 # Add LunarVim to path
 export PATH="$PATH:/Users/freddie.haddad/.local/bin"
 
-
 # zoxide
 eval "$(zoxide init zsh)"
 
 # Bat - colorscheme
-export BAT_THEME="Nord"
+export BAT_THEME="base16"
 alias cat="bat"
 
 # LunarVim aliases
@@ -79,13 +78,6 @@ Update the LunarVim config
 ```
 mv ~/.config/lvim/config.lua ~/.config/lvim/config.lua~
 ln -s $(pwd)/lvim/config.lua ~/.config/lvim/config.lua
-```
-
-LazyGit
-
-```
-mkdir -p ~/Library/Application\ Support/lazygit
-ln -s $(pwd)/lazygit/config.yml  ~/Library/Application\ Support/lazygit/config.yml
 ```
 
 When you start LunarVim for the first time, be sure to do a `PackerSync` as the custom config disables some plugins and installs others.
