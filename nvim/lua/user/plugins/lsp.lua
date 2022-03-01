@@ -31,6 +31,17 @@ if not status_ok then
 end
 
 plugin.on_server_ready(function(server)
-    local opts = {}
-    server:setup(opts)
+  local opts = {}
+  if server.name == "sumneko_lua" then
+    opts.settings = {
+      Lua = {
+        diagnostics = {
+	  globals = {
+	    "vim"
+	  }
+	}
+      }
+    }
+  end
+  server:setup(opts)
 end)
