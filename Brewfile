@@ -1,4 +1,5 @@
 tap "homebrew/bundle"
+tap "homebrew/cask"
 tap "homebrew/core"
 tap "romkatv/powerlevel10k"
 brew "bat"
