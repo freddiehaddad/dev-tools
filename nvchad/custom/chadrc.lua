@@ -8,6 +8,10 @@ M.ui = {
   transparency = false,
 }
 
+M.options = {
+  mouse = "",
+}
+
 M.plugins = {
   status = {
     bufferline = false,
