@@ -90,9 +90,6 @@ zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 # FZF
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Base16 Default Dark
-# Author: Chris Kempson (http://chriskempson.com)
-
 # zoxide
 eval "$(zoxide init zsh)"
 
