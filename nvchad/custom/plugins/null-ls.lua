@@ -14,7 +14,7 @@ local sources = {
   b.formatting.stylua,
 
   -- Go
-  b.formatting.gofmt,
+  -- b.formatting.gofmt,
   b.diagnostics.revive,
 }
 
