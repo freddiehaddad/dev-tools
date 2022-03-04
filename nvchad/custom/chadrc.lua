@@ -9,7 +9,9 @@ M.ui = {
 }
 
 M.options = {
+  cursorline = true,
   mouse = "",
+  relativenumber = true,
 }
 
 M.plugins = {
