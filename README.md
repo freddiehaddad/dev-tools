@@ -49,8 +49,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 # iTerm
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Base16 Default Dark
 # Author: Chris Kempson (http://chriskempson.com)
 
@@ -87,6 +85,13 @@ _gen_fzf_default_opts
 
 # ZSH vi mode
 [ -f /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh ] && source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
+
+# FZF
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Base16 Default Dark
+# Author: Chris Kempson (http://chriskempson.com)
 
 # zoxide
 eval "$(zoxide init zsh)"
