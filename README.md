@@ -20,6 +20,12 @@ Visit the github repos for the remaining packages that Homebrew did not provide 
 
 Update your shell environement
 
+Install PrettierD
+
+```zsh
+npm install -g @fsouza/prettierd
+```
+
 Base 16
 
 ```zsh
