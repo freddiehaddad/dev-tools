@@ -6,6 +6,7 @@ local userPlugins = require "custom.plugins"
 M.ui = {
   theme = "classic-dark",
   transparency = false,
+  hl_override = "custom.highlights",
 }
 
 M.options = {
