@@ -1,15 +1,4 @@
-require "user.options"
-require "user.colorscheme"
-require "user.keybinds"
-require "user.plugins"
-require "user.plugins.cmp"
-require "user.plugins.dap"
-require "user.plugins.gitsigns"
-require "user.plugins.lazygit"
-require "user.plugins.lsp"
-require "user.plugins.lualine"
-require "user.plugins.null-ls"
-require "user.plugins.telescope"
-require "user.plugins.treesitter"
-require "user.plugins.trouble"
-require "user.plugins.whichkey"
+require('plugins').setup()
+require('options').setup()
+require('mappings').setup()
+require('colorscheme').setup()
