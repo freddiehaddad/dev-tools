@@ -42,6 +42,24 @@ local load_plugins = function(use)
     config = function() require('config.nvim-lsp-installer').setup() end
   })
 
+  -- DAP
+  use({
+    'mfussenegger/nvim-dap',
+    config = function () require('config.nvim-dap').setup() end
+  })
+
+  use({
+    'rcarriga/nvim-dap-ui',
+    requires = 'mfussenegger/nvim-dap',
+    config = function() require('config.nvim-dap-ui').setup() end
+  })
+
+  use({
+    'leoluz/nvim-dap-go',
+    requires = 'mfussenegger/nvim-dap',
+    config = function() require('dap-go').setup() end
+  })
+
   -- Telescope
   use({
     'nvim-telescope/telescope.nvim',
@@ -61,6 +79,12 @@ local load_plugins = function(use)
     'jvgrootveld/telescope-zoxide',
     requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
     config = function() require('config.telescope-zoxide').setup() end
+  })
+
+  use({
+    'nvim-telescope/telescope-dap.nvim',
+    requires = 'nvim-telescope/telescope.nvim',
+    config = function() require('config.telescope-dap').setup() end
   })
 
   -- Treesitter
