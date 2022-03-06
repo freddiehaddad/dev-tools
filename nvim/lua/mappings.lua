@@ -20,10 +20,6 @@ local setup = function()
   map('n', '<c-j>', '<c-w>j')
   map('n', '<c-k>', '<c-w>k')
   map('n', '<c-l>', '<c-w>l')
-
-  -- Terminal
-  map('n', '<c-t>', ':terminal<cr>')
-  map('t', '<esc>', '<c-\\><c-n>')
 end
 
 M.setup = setup

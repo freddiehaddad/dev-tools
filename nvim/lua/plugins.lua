@@ -107,6 +107,12 @@ local load_plugins = function(use)
     config = function() require('config.feline').setup() end
   })
 
+  -- Terminal
+  use({
+    'akinsho/toggleterm.nvim',
+    config = function() require('config.toggleterm').setup() end
+  })
+
 end
 
 local config = {
