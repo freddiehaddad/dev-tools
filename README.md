@@ -14,18 +14,6 @@
    brew bundle Brewfile.core
    ```
 
-1. Install Node package
-
-   ```
-   npm install -g neovim
-   ```
-
-1. Install Python package
-
-   ```
-   pip3 install pynvim
-   ```
-
 1. Install Packer
 
    ```
