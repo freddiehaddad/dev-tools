@@ -36,8 +36,8 @@ local setup_server = function(server)
     options.settings = {
       Lua = {
         diagnostics = {
-	  globals = { 'vim' }
-	}
+          globals = { 'vim' }
+        }
       }
     }
   end
