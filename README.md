@@ -65,3 +65,25 @@
    ```
    Error sourcing ~/.vimrc_background
    ```
+
+## Post Setup
+
+Neovim should be ready. However some runtime configurations are required.
+
+### LSP functionality.
+
+* Use `:LspInstallInfo` to install the desired language servers.
+
+### Debugging with DAP
+
+Core DAP functionality comes pre-configured, however each langauge requires specific configuration.
+
+Refer to [https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation) for configuring specific languages.
+
+### Debugging wtih Delve
+
+Support for debugging the Go programming language is included.  Just install `delve` on your system and ensure it's in your path.
+
+```
+brew install delve
+```
