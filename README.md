@@ -8,6 +8,32 @@
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```
 
+1. Install Bash16-Shell
+
+   ```
+   git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+   ```
+
+1. Update your `~/.zshrc` file
+
+   ```zsh
+   # Base16 Shell
+   BASE16_SHELL="$HOME/.config/base16-shell/"
+   [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
+   ```
+
+1. Reload shell
+
+   ```
+   source ~/.zshrc
+   ```
+
+1. Select a theme (type `base16` followed by a tab to perform tab completion)
+
+   ```
+   base16_classic_dark
+   ```
+
 1. Core Package Install
 
    ```
