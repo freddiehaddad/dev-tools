@@ -40,6 +40,8 @@
    brew bundle Brewfile.core
    ```
 
+1. Configure your terminal to use the nerd font installd by homebrew
+
 1. Install Packer
 
    ```
