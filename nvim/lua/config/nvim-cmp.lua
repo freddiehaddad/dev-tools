@@ -16,7 +16,7 @@ local is_emmet_active = function()
   return false
 end
 
-local function jumpable(dir)
+local jumpable = function(dir)
   local luasnip_ok, luasnip = pcall(require, "luasnip")
   if not luasnip_ok then
     return
@@ -25,7 +25,7 @@ local function jumpable(dir)
   local win_get_cursor = vim.api.nvim_win_get_cursor
   local get_current_buf = vim.api.nvim_get_current_buf
 
-  local function inside_snippet()
+  local inside_snippet = function()
     -- for outdated versions of luasnip
     if not luasnip.session.current_nodes then
       return false
@@ -44,7 +44,7 @@ local function jumpable(dir)
 
   ---sets the current buffer's luasnip to the one nearest the cursor
   ---@return boolean true if a node is found, false otherwise
-  local function seek_luasnip_cursor_node()
+  local seek_luasnip_cursor_node = function()
     -- for outdated versions of luasnip
     if not luasnip.session.current_nodes then
       return false
