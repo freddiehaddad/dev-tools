@@ -1,10 +1,10 @@
 local M = {}
 
 local options = {
-  clipboard = "unnamedplus",
+  clipboard = 'unnamedplus',
   cursorline = true,
   expandtab = true,
-  fileencoding = "utf-8",
+  fileencoding = 'utf-8',
   fillchars = 'eob: ',
   number = true,
   numberwidth = 4,
@@ -15,7 +15,7 @@ local options = {
   shiftwidth = 2,
   showmode = false,
   sidescrolloff = 4,
-  signcolumn = "yes",
+  signcolumn = 'yes',
   splitbelow = true,
   splitright = true,
   swapfile = false,

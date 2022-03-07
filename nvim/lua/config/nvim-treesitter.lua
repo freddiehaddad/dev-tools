@@ -17,11 +17,11 @@ local options = {
     'rust',
     'toml',
     'vim',
-    'yaml'
+    'yaml',
   },
   highlight = {
-    enable = true
-  }
+    enable = true,
+  },
 }
 
 local setup = function()

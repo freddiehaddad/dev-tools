@@ -2,11 +2,15 @@ local M = {}
 
 local on_attach = function(client, bufnr)
   local map = function(mode, lhs, rhs, opts)
-    opts = vim.tbl_extend('force', { noremap = true, silent = true }, opts or {})
+    opts = vim.tbl_extend(
+      'force',
+      { noremap = true, silent = true },
+      opts or {}
+    )
     vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
   end
 
-  if client.name == "gopls" then
+  if client.name == 'gopls' then
     vim.notify('disable gopls formating')
     client.resolved_capabilities.document_formatting = false
   end
@@ -22,7 +26,11 @@ local on_attach = function(client, bufnr)
   -- map('n', '<C-k>', ':lua vim.lsp.buf.signature_help()<cr>')
   map('n', '<space>wa', ':lua vim.sp.buf.add_workspace_folder()<cr>')
   map('n', '<space>wr', ':lua vim.lsp.buf.remove_workspace_folder()<cr>')
-  map('n', '<space>wl', ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>')
+  map(
+    'n',
+    '<space>wl',
+    ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>'
+  )
   map('n', '<space>D', ':lua vim.lsp.buf.type_definition()<cr>')
   map('n', '<space>rn', ':lua vim.lsp.buf.rename()<cr>')
   map('n', '<space>ca', ':lua vim.lsp.buf.code_action()<cr>')
@@ -34,16 +42,18 @@ local setup_server = function(server)
   local options = {
     on_attach = on_attach,
     flags = { debounce_text_changes = 150 },
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    capabilities = require('cmp_nvim_lsp').update_capabilities(
+      vim.lsp.protocol.make_client_capabilities()
+    ),
   }
 
   if server.name == 'sumneko_lua' then
     options.settings = {
       Lua = {
         diagnostics = {
-          globals = { 'vim' }
-        }
-      }
+          globals = { 'vim' },
+        },
+      },
     }
   end
 
@@ -54,7 +64,11 @@ local setup = function()
   require('nvim-lsp-installer').on_server_ready(setup_server)
 
   local map = function(mode, lhs, rhs, opts)
-    opts = vim.tbl_extend('force', { noremap = true, silent = true }, opts or {})
+    opts = vim.tbl_extend(
+      'force',
+      { noremap = true, silent = true },
+      opts or {}
+    )
     vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
   end
 

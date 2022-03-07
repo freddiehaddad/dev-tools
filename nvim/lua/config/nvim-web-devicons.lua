@@ -1,7 +1,7 @@
 local M = {}
 
 local options = {
-  default = true
+  default = true,
 }
 
 local setup = function()

@@ -1,15 +1,15 @@
 local M = {}
 
 local check_backspace = function()
-  local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+  local col = vim.fn.col('.') - 1
+  return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
 end
 
 local is_emmet_active = function()
   local clients = vim.lsp.buf_get_clients()
 
   for _, client in pairs(clients) do
-    if client.name == "emmet_ls" then
+    if client.name == 'emmet_ls' then
       return true
     end
   end
@@ -17,7 +17,7 @@ local is_emmet_active = function()
 end
 
 local jumpable = function(dir)
-  local luasnip_ok, luasnip = pcall(require, "luasnip")
+  local luasnip_ok, luasnip = pcall(require, 'luasnip')
   if not luasnip_ok then
     return
   end
@@ -36,7 +36,8 @@ local jumpable = function(dir)
       return false
     end
 
-    local snip_begin_pos, snip_end_pos = node.parent.snippet.mark:pos_begin_end()
+    local snip_begin_pos, snip_end_pos =
+      node.parent.snippet.mark:pos_begin_end()
     local pos = win_get_cursor(0)
     pos[1] = pos[1] - 1 -- LuaSnip is 0-based not 1-based like nvim for rows
     return pos[1] >= snip_begin_pos[1] and pos[1] <= snip_end_pos[1]
@@ -63,7 +64,10 @@ local jumpable = function(dir)
     -- exit early if we're past the exit node
     if exit_node then
       local exit_pos_end = exit_node.mark:pos_end()
-      if (pos[1] > exit_pos_end[1]) or (pos[1] == exit_pos_end[1] and pos[2] > exit_pos_end[2]) then
+      if
+        (pos[1] > exit_pos_end[1])
+        or (pos[1] == exit_pos_end[1] and pos[2] > exit_pos_end[2])
+      then
         snippet:remove_from_jumplist()
         luasnip.session.current_nodes[get_current_buf()] = nil
 
@@ -75,7 +79,9 @@ local jumpable = function(dir)
     while node ~= nil and node.next ~= nil and node ~= snippet do
       local n_next = node.next
       local next_pos = n_next and n_next.mark:pos_begin()
-      local candidate = n_next ~= snippet and next_pos and (pos[1] < next_pos[1])
+      local candidate = n_next ~= snippet
+          and next_pos
+          and (pos[1] < next_pos[1])
         or (pos[1] == next_pos[1] and pos[2] < next_pos[2])
 
       -- Past unmarked exit node, exit early
@@ -117,7 +123,9 @@ local jumpable = function(dir)
   if dir == -1 then
     return inside_snippet() and luasnip.jumpable(-1)
   else
-    return inside_snippet() and seek_luasnip_cursor_node() and luasnip.jumpable()
+    return inside_snippet()
+      and seek_luasnip_cursor_node()
+      and luasnip.jumpable()
   end
 end
 
@@ -133,8 +141,8 @@ local configure_options = function(cmp, snip)
     mapping = {
       ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ["<C-k>"] = cmp.mapping.select_prev_item(),
-      ["<C-j>"] = cmp.mapping.select_next_item(),
+      ['<C-k>'] = cmp.mapping.select_prev_item(),
+      ['<C-j>'] = cmp.mapping.select_next_item(),
       ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
       ['<C-e>'] = cmp.mapping({
         i = cmp.mapping.abort(),
@@ -143,7 +151,7 @@ local configure_options = function(cmp, snip)
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
-      ["<Tab>"] = cmp.mapping(function(fallback)
+      ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
         elseif snip.expandable() then
@@ -153,14 +161,15 @@ local configure_options = function(cmp, snip)
         elseif check_backspace() then
           fallback()
         elseif is_emmet_active() then
-          return vim.fn["cmp#complete"]()
+          return vim.fn['cmp#complete']()
         else
           fallback()
         end
       end, {
-        'i', 's'
+        'i',
+        's',
       }),
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
+      ['<S-Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         elseif jumpable(-1) then
@@ -169,8 +178,8 @@ local configure_options = function(cmp, snip)
           fallback()
         end
       end, {
-        "i",
-        "s",
+        'i',
+        's',
       }),
     },
     sources = cmp.config.sources({
@@ -178,23 +187,23 @@ local configure_options = function(cmp, snip)
       { name = 'luasnip' },
     }, {
       { name = 'buffer' },
-    })
+    }),
   }
 
   -- `/` cmdline setup.
   cmp.setup.cmdline('/', {
     sources = {
-      { name = 'buffer' }
-    }
+      { name = 'buffer' },
+    },
   })
 
   -- `:` cmdline setup.
   cmp.setup.cmdline(':', {
     sources = cmp.config.sources({
-      { name = 'path' }
+      { name = 'path' },
     }, {
-      { name = 'cmdline' }
-    })
+      { name = 'cmdline' },
+    }),
   })
 
   return options

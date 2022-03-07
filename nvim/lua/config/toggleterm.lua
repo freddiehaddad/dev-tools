@@ -4,12 +4,12 @@ local options = {
   direction = 'vertical',
   open_mapping = [[<c-t>]],
   size = function(term)
-    if term.direction == "horizontal" then
+    if term.direction == 'horizontal' then
       return 15
-    elseif term.direction == "vertical" then
+    elseif term.direction == 'vertical' then
       return vim.o.columns * 0.25
     end
-  end
+  end,
 }
 
 local setup = function()
