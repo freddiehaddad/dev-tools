@@ -92,9 +92,15 @@ brew install delve
 
 ### Null-LS
 
-Code formatting for `lua` and `go` files is configured. Just install `gofmt` and `stylua`.
+Code formatting for `lua` and `go` files is pre-configured. Just install `gofmt` and `stylua`.
 
 ```
 brew install go
 brew install stylua
+```
+
+Code spell checking is also included.
+
+```
+brew install codespell
 ```
