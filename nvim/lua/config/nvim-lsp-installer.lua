@@ -1,9 +1,14 @@
 local M = {}
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   local map = function(mode, lhs, rhs, opts)
     opts = vim.tbl_extend('force', { noremap = true, silent = true }, opts or {})
     vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
+  end
+
+  if client.name == "gopls" then
+    vim.notify('disable gopls formating')
+    client.resolved_capabilities.document_formatting = false
   end
 
   -- Enable completion triggered by <c-x><c-o>

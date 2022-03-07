@@ -41,6 +41,11 @@ local load_plugins = function(use)
     requires = { 'neovim/nvim-lspconfig', 'hrsh7th/cmp-nvim-lsp' },
     config = function() require('config.nvim-lsp-installer').setup() end
   })
+  use({
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function() require('config.null-ls').setup() end
+  })
 
   -- DAP
   use({

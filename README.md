@@ -89,3 +89,12 @@ Support for debugging the Go programming language is included.  Just install `de
 ```
 brew install delve
 ```
+
+### Null-LS
+
+Code formatting for `lua` and `go` files is configured. Just install `gofmt` and `stylua`.
+
+```
+brew install go
+brew install stylua
+```
