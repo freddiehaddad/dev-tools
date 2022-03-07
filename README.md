@@ -78,11 +78,11 @@ Neovim should be ready. However some runtime configurations are required.
 
 ### Debugging with DAP
 
-Core DAP functionality comes pre-configured, however each langauge requires specific configuration.
+Core DAP functionality comes pre-configured, however each language requires specific configuration.
 
 Refer to [https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation) for configuring specific languages.
 
-### Debugging wtih Delve
+### Debugging with Delve
 
 Support for debugging the Go programming language is included.  Just install `delve` on your system and ensure it's in your path.
 
