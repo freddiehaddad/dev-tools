@@ -11,7 +11,6 @@ local on_attach = function(client, bufnr)
   end
 
   if client.name == 'gopls' then
-    vim.notify('disable gopls formating')
     client.resolved_capabilities.document_formatting = false
   end
 
