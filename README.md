@@ -8,7 +8,7 @@
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```
 
-1. Install Bash16-Shell
+1. Install Base16-Shell
 
    ```
    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
@@ -40,7 +40,7 @@
    brew bundle Brewfile.core
    ```
 
-1. Configure your terminal to use the nerd font installd by homebrew
+1. Configure your terminal to use the nerd font installed by homebrew
 
 1. Install Packer
 
