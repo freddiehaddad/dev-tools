@@ -135,6 +135,10 @@ local load_plugins = function(use)
     end,
   })
 
+  use({
+    'liuchengxu/vista.vim'
+  })
+
   -- GitSigns
   use({
     'lewis6991/gitsigns.nvim',
