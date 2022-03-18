@@ -13,6 +13,7 @@ local setup = function()
     vim.notify('Error sourcing ' .. source)
     return
   end
+  vim.cmd('hi VertSplit guibg=bg guifg=bg')
 end
 
 M.setup = setup
